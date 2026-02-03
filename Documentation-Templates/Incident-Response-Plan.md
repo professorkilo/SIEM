@@ -7,16 +7,8 @@
 - [Important Notes](#important-notes)
 - [Identification](#identification)
   - [Conduct an Initial Assessment](#conduct-an-initial-assessment)
-  - [Investigation](#investigation)
-  - [Create a Ticket for an Incident](#create-a-ticket-for-an-incident)
-  - [Notify the Appropriate Individuals/Groups/Organizations](#notify-the-appropriate-individualsgroupsorganizations)
-  - [Create and Fill a Tracking Spreadsheet](#create-and-fill-a-tracking-spreadsheet)
-    - [Conduct Analysis](#conduct-analysis)
-      - [Gather Logs](#gather-logs)
-      - [Determine Priority](#determine-priority)
-      - [Determine Attack Technique](#determine-attack-technique)
-      - [Develop Next Courses of Action](#develop-next-courses-of-action)
-    - [Determine Root Cause](#determine-root-cause)
+  - [Declare an Incident](#declare-an-incident)
+  - [Investigation and Analysis](#investigation-and-analysis)
 - [Containment](#containment)
   - [Containment Courses of Action](#containment-courses-of-action)
   - [User Participation](#user-participation)
@@ -71,41 +63,14 @@ The following questions are provided for consideration during initial assessment
 - Do any related file hashes appear on VirusTotal? NOTE: NEVER submit the actual file, even if there are no matching results for the hash.
 
 
-## Investigation
-Collect, validate, and analyze information related to the incident to characterize the perceived threat and to assist in identifying the attack techniques, scope of compromise, root cause(s), and potential business impact. Continue to update the ticket with any actions taken and other useful information that may help to better characterize the incident.
-
-The primary objectives of investigation include:
-- Ensuring the accuracy and completeness of steps taken during investigation.
-- Characterizing and communicating the potential impact to the business.
-- Systematically capturing the methods used in the attack and the security controls that could prevent future occurrences.
-- Determining the present scope of compromise and identifying containment options.
-- Determining options available to eradicate the adversarial presence.
-- Identifying the root cause(s) of the incident through technical analysis.
-
-The following questions are provided as a starting point for investigation; tailoring is likely required and recommended:
-- What is the earliest observable event relevant to the investigation?
-- What symptoms has the user experienced?
-- What is the current state of the affected system? Is it compromised at the user or root/admin level?
-- If policy allows the choice, should the system be isolated or should the team monitor closely?
-  - What is the impact on the mission if the system is isolated from the network immediately?
-    - If a server or appliance is involved, what notable applications/services are installed/running?
-    - If a workstation is involved, how long would it take to restore operations to its user, and how would that downtime affect the business?
-- What surrounding events exist with matching source/destination user/IP addresses?
-- Are there any logs available outside the centralized logging solution that would benefit the investigation?
-- If the system was compromised, what did its most recent vulnerability scan data reveal?
-  - Are there any recent zero-day or otherwise notable vulnerabilities present?
-- What is the hypothesis for what happened? What logs will be needed to confirm or deny that hypothesis?
-
-Unless a suspicion arises early in the investigation of an insider threat, affected users may be asked relevant questions via email or telephone interview depending on the characteristics of the incident. Such interview questions and answers shall be recorded in the ticket, even when a verbal interview was conducted.
-
-When possible, conduct Investigation actions in parallel with containment, eradication, and recovery stages. Linear incident response tends to result in a far lengthier and expensive process than is necessary due to prolonging adversarial exposure and impact to confidentiality, integrity, and availability.
+## Declare an Incident
 
 
-## Create a Ticket for an Incident
+### Create a Ticket for an Incident
 Create a ticket in [ticket management system] to track all activities. Keep the related ticket updated with, at a minimum, an executive summary of ongoing actions and findings.
 
 
-## Notify the Appropriate Individuals/Groups/Organizations
+### Notify the Appropriate Individuals/Groups/Organizations
 Ensure all communication, files, and information related to an incident are disseminated only on a need-to-know basis. Incident details may not be discussed outside of the Incident Response Team, management, and those with a clear need-to-know without previous consent from management.
 
 - Include [Incident Resposne Team] in all Incident-related correspondence.
@@ -116,7 +81,7 @@ Ensure all communication, files, and information related to an incident are diss
 [Add Details as to who should be notified under which conditions.]
 
 
-## Create and Fill a Tracking Spreadsheet
+### Create and Fill a Tracking Spreadsheet
 Create a tracker for the recording of Investigative Notes, Contact Info, Timeline, Assets, Identities, Host Indicators, Network Indicators, Requests and Tasks, Evidence, Forensics Keywords, and Investigative Queries as detailed below. 
 
 Given a tracker Excel (or equivalent) file, each column in the table below represents a tab, and each value under the tab name represents a column in that tab.
@@ -152,7 +117,35 @@ Given a tracker Excel (or equivalent) file, each column in the table below repre
 - Investigative Queries - Record incident-specific queries for SIEM / log correlation / investigative platforms to facilitate investigative analysis.
 
 
-### Conduct Analysis
+## Investigation and Analysis
+Collect, validate, and analyze information related to the incident to characterize the perceived threat and to assist in identifying the attack techniques, scope of compromise, root cause(s), and potential business impact. Continue to update the ticket with any actions taken and other useful information that may help to better characterize the incident.
+
+The primary objectives of investigation include:
+- Ensuring the accuracy and completeness of steps taken during investigation.
+- Characterizing and communicating the potential impact to the business.
+- Systematically capturing the methods used in the attack and the security controls that could prevent future occurrences.
+- Determining the present scope of compromise and identifying containment options.
+- Determining options available to eradicate the adversarial presence.
+- Identifying the root cause(s) of the incident through technical analysis.
+
+The following questions are provided as a starting point for investigation; tailoring is likely required and recommended:
+- What is the earliest observable event relevant to the investigation?
+- What symptoms has the user experienced?
+- What is the current state of the affected system? Is it compromised at the user or root/admin level?
+- If policy allows the choice, should the system be isolated or should the team monitor closely?
+  - What is the impact on the mission if the system is isolated from the network immediately?
+    - If a server or appliance is involved, what notable applications/services are installed/running?
+    - If a workstation is involved, how long would it take to restore operations to its user, and how would that downtime affect the business?
+- What surrounding events exist with matching source/destination user/IP addresses?
+- Are there any logs available outside the centralized logging solution that would benefit the investigation?
+- If the system was compromised, what did its most recent vulnerability scan data reveal?
+  - Are there any recent zero-day or otherwise notable vulnerabilities present?
+- What is the hypothesis for what happened? What logs will be needed to confirm or deny that hypothesis?
+
+Unless a suspicion arises early in the investigation of an insider threat, affected users may be asked relevant questions via email or telephone interview depending on the characteristics of the incident. Such interview questions and answers shall be recorded in the ticket, even when a verbal interview was conducted.
+
+When possible, conduct Investigation actions in parallel with containment, eradication, and recovery stages. Linear incident response tends to result in a far lengthier and expensive process than is necessary due to prolonging adversarial exposure and impact to confidentiality, integrity, and availability.
+
 Record any logs from relevant hosts, network appliances, server applications, etc. that are determined to be related to the event in the tracker to allow proper analysis. This timeline may be used to correlate events among multiple sources, which is invaluable in confirming of denying any hypotheses formed in earlier stages of the investigation.
 
 Note affected systems IPs, domain names, files, and accounts to allow retrospective analysis for repeat offenders, threat intelligence matches, and the potential for a wider scope than expected in the tracker. Analysis that does result in a widening of scope in relation to time, systems, users, files, etc. may require gathering of additional logs. Maintain a high level of awareness of data that could be used as internal indicators of compromise that could result in a shorter detection time (or even prevention of) future incidents.

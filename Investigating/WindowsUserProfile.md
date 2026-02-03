@@ -1,4 +1,4 @@
-This document aims to assist in inspection of a c:\users\userprofile folder for lightweight forensics.
+This document aims to assist in inspection of a c:\users\userprofile folder for lightweight forensics. Any suspicious files should be hashed and searched on VirusTotal.
 
 # General Review of Contents
 Some sections will be highlighted, but a general, high-level review may reveal things specific to the user/host.
@@ -62,6 +62,7 @@ $SymantecDetections | Format-Table -AutoSize
 
 
 ## Review Edge Browsing History
+May also use https://github.com/sqlitebrowser/sqlitebrowser
 ```
 $HistoryFile = "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\History"
 Get-Content -Path $HistoryFile -Encoding Byte -ReadCount 0 | 
@@ -72,6 +73,7 @@ Get-Content -Path $HistoryFile -Encoding Byte -ReadCount 0 |
 
 
 ## Review Edge Logon Emails
+May also use https://github.com/sqlitebrowser/sqlitebrowser
 This scrapes the file for Email Addresses. This tells you where they have accounts and who they logged in as (e.g., personal emails vs. work emails).
 ```
 Get-Content -Path "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\Login Data" -Encoding Latin1 -ReadCount 0 | 
@@ -81,6 +83,7 @@ Get-Content -Path "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\Login
 
 
 ## Review Edge Logon Addresses
+May also use https://github.com/sqlitebrowser/sqlitebrowser
 This scrapes the file for URLs. This tells you where they have accounts and who they logged in as (e.g., personal emails vs. work emails).
 ```
 Get-Content -Path "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\Login Data" -ReadCount 0 | 
@@ -90,6 +93,7 @@ Get-Content -Path "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\Login
 
 
 ## Review Edge Cookies
+May also use https://github.com/sqlitebrowser/sqlitebrowser
 This scrapes for Domains. This helps you identify if the user has active sessions on suspicious sites (e.g., mega.nz, protonmail.com) or cloud consoles (aws.amazon.com) without needing a password.
 ```
 Get-Content -Path "$UserDir\AppData\Local\Microsoft\Edge\User Data\Default\Cookies" -ReadCount 0 | 
